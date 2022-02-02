@@ -20,7 +20,7 @@ def get_response_from_static_api(
     }
 
     if pt_type:
-        params["pt"] = f'{",".join([lon, lat])},{pt_type}'
+        params["pt"] = pt_type
     response = requests.get(static_api_server, params=params)
 
     return response

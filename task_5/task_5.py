@@ -56,7 +56,7 @@ def main() -> None:
 
                     longitude = lon
                     latitude = lat
-                    pt_type = 'pmpnl'
+                    pt_type = f'{lon},{lat},pmpnl'
 
             manager.process_events(event)
 
