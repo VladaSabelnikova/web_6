@@ -60,7 +60,7 @@ def main() -> None:
             latitude
         )
 
-        if changes:  # хотя бы одно изменение было
+        if changes:  # Хотя бы одно изменение было
             old_delta, old_longitude, old_latitude = changes
             map_file = get_map_file(longitude, latitude, delta)
 
