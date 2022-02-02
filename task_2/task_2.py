@@ -1,7 +1,7 @@
 import pygame
 
 from get_map_file import get_map_file
-from settings import KEY_UP, KEY_DOWN
+from settings import KEY_PG_UP, KEY_PG_DOWN
 
 
 def main() -> None:
@@ -24,10 +24,10 @@ def main() -> None:
 
             if event.type == pygame.KEYDOWN:
 
-                if event.key == KEY_UP:
+                if event.key == KEY_PG_UP:
                     delta = str(min(float(delta) * step, 50))
 
-                elif event.key == KEY_DOWN:
+                elif event.key == KEY_PG_DOWN:
                     delta = str(max(float(delta) / step, 0.0001))
 
         if old_delta != delta:
