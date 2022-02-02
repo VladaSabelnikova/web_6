@@ -28,7 +28,6 @@ def main() -> None:
                 running = False
 
             if event.type == pygame.KEYDOWN:
-                print(event.key)
 
                 if event.key == KEY_PG_UP:
                     delta = str(min(float(delta) * step_for_delta, 50))
