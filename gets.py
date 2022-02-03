@@ -25,3 +25,20 @@ def get_full_address_from_geocoder_response(
     full_address = toponym["metaDataProperty"]["GeocoderMetaData"]["text"]
 
     return full_address
+
+
+def get_postal_code_from_geocoder_response(
+    response: requests.Response
+) -> str:
+    postal_code = ''
+    json_response = response.json()
+    toponym = json_response["response"]["GeoObjectCollection"][
+    "featureMember"][0]["GeoObject"]
+
+    all_data = toponym['metaDataProperty']['GeocoderMetaData'][
+                'Address']
+
+    if 'postal_code' in all_data.keys():
+        postal_code = all_data['postal_code']
+
+    return postal_code
