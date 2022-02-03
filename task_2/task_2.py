@@ -25,10 +25,10 @@ def main() -> None:
             if event.type == pygame.KEYDOWN:
 
                 if event.key == KEY_PG_UP:
-                    delta = str(min(float(delta) * step, 50))
+                    delta = str(min(float(delta) / step, 50))
 
                 elif event.key == KEY_PG_DOWN:
-                    delta = str(max(float(delta) / step, 0.0001))
+                    delta = str(max(float(delta) * step, 0.0001))
 
         if old_delta != delta:
             old_delta = delta

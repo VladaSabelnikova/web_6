@@ -42,3 +42,13 @@ def get_postal_code_from_geocoder_response(
         postal_code = all_data['postal_code']
 
     return postal_code
+
+
+def get_full_address_from_search_response(
+    response: requests.Response
+) -> str:
+    json_response = response.json()
+    location = json_response["features"][0]
+    org_address = location["properties"]["GeocoderMetaData"]["text"]
+
+    return org_address

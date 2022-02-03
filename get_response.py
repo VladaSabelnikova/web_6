@@ -1,7 +1,7 @@
 from typing import Optional
 
 import requests
-from private_data.secrets import GEOCODER_API_KEY
+from private_data.secrets import GEOCODER_API_KEY, SEARCH_API_KEY
 
 
 def get_response_from_static_api(
@@ -26,7 +26,7 @@ def get_response_from_static_api(
     return response
 
 
-def get_response_from_geocoder_api(toponym_to_find):
+def get_response_from_geocoder_api(toponym_to_find: str) -> requests.Response:
     geocoder_api_server = "http://geocode-maps.yandex.ru/1.x/"
 
     params = {
@@ -36,5 +36,27 @@ def get_response_from_geocoder_api(toponym_to_find):
     }
 
     response = requests.get(geocoder_api_server, params=params)
+
+    return response
+
+
+def get_response_from_search_api(
+    longitude: str,
+    latitude: str
+) -> requests.Response:
+    search_api_server = "https://search-maps.yandex.ru/v1/"
+    api_key = SEARCH_API_KEY
+
+    address_ll = f'{longitude},{latitude}'
+
+    search_params = {
+        "apikey": api_key,
+        "text": address_ll,
+        "lang": "ru_RU",
+        "ll": address_ll,
+        "type": "geo"
+    }
+
+    response = requests.get(search_api_server, params=search_params)
 
     return response

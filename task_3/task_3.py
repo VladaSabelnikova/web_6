@@ -30,10 +30,10 @@ def main() -> None:
             if event.type == pygame.KEYDOWN:
 
                 if event.key == KEY_PG_UP:
-                    delta = str(min(float(delta) * step_for_delta, 50))
+                    delta = str(min(float(delta) / step_for_delta, 50))
 
                 elif event.key == KEY_PG_DOWN:
-                    delta = str(max(float(delta) / step_for_delta, 0.0001))
+                    delta = str(max(float(delta) * step_for_delta, 0.0001))
 
                 elif event.key == KEY_UP:
                     latitude = str(min(float(latitude) + step_for_lon_lat, 90))
