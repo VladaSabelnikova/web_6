@@ -1,18 +1,17 @@
 import pygame
 import pygame_gui
 
-from checks import something_has_changed_for_task_4, \
-    something_has_changed_for_task_7
+from checks import something_has_changed_for_task_7
 from get_lon_lat import get_lon_lat_from_geocoder_response
 from get_map_file import get_map_file
 from get_response import get_response_from_geocoder_api
 from pygame_gui_elements.create_manager import create_manager
+from pygame_gui_elements.drop_down_menu import create_drop_down_menu
 from pygame_gui_elements.resetting_search_result import \
     create_resetting_search_result_button
 from pygame_gui_elements.text_entry_line import create_text_entry_line
 from settings import KEY_PG_UP, KEY_PG_DOWN, KEY_UP, KEY_DOWN, KEY_RIGHT, \
     KEY_LEFT
-from pygame_gui_elements.drop_down_menu import create_drop_down_menu
 
 
 def main() -> None:
@@ -109,7 +108,7 @@ def main() -> None:
         )
 
         if changes:  # Хотя бы одно изменение было
-            old_delta, old_longitude, old_latitude,\
+            old_delta, old_longitude, old_latitude, \
             old_type_map, old_pt_type = changes
 
             map_file = get_map_file(
