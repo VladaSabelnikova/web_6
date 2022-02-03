@@ -2,7 +2,7 @@ import pygame
 import pygame_gui
 
 from checks import something_has_changed_for_task_7
-from get_lon_lat import get_lon_lat_from_geocoder_response, \
+from gets import get_lon_lat_from_geocoder_response, \
     get_full_address_from_geocoder_response
 from get_map_file import get_map_file
 from get_response import get_response_from_geocoder_api
