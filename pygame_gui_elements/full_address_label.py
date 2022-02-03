@@ -7,7 +7,7 @@ def create_full_address_label(
 ) -> pygame_gui.elements.ui_label.UILabel:
     full_address_label = pygame_gui.elements.ui_label.UILabel(
         text='',
-        relative_rect=pygame.Rect((470, 39), (120, 49)),
+        relative_rect=pygame.Rect((40, 39), (520, 29)),
         manager=manager,
     )
     return full_address_label
