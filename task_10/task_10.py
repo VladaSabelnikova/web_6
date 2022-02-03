@@ -64,15 +64,16 @@ def main() -> None:
                         type_map = event.text
 
                     elif event.ui_element == post_code_menu:
-                        toponym_to_find = '+'.join(input_label.text.split())
+                        if input_label.text:
+                            toponym_to_find = '+'.join(input_label.text.split())
 
-                        longitude, latitude, pt_type, address = \
-                            create_address_for_label(
-                                toponym_to_find,
-                                post_code_menu
-                            )
+                            longitude, latitude, pt_type, address = \
+                                create_address_for_label(
+                                    toponym_to_find,
+                                    post_code_menu
+                                )
 
-                        address_label.set_text(address)
+                            address_label.set_text(address)
 
                 if event.user_type == pygame_gui.UI_TEXT_ENTRY_FINISHED:
                     toponym_to_find = '+'.join(event.text.split())
