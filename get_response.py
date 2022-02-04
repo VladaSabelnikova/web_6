@@ -51,7 +51,7 @@ def get_response_from_search_api_geo(
 
     search_params = {
         "apikey": api_key,
-        "text": "Магазин",
+        "text": f'{latitude},{longitude}',
         "lang": "ru_RU",
         "ll": address_ll,
         "type": "geo"
@@ -73,7 +73,7 @@ def get_response_from_search_api_biz(
 
     search_params = {
         "apikey": api_key,
-        "text": 'Магазин',
+        "text": "Магазин",
         "lang": "ru_RU",
         "ll": address_ll,
         "type": "biz"

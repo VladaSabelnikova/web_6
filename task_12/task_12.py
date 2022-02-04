@@ -168,7 +168,6 @@ def main() -> None:
                             post_code_menu
                         )
                     address_label.set_text(address)
-                    # pass
 
                 elif event.button == MOUSE_KEY_RIGHT:
                     # Вычисляем координату
