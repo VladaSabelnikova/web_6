@@ -40,7 +40,29 @@ def get_response_from_geocoder_api(toponym_to_find: str) -> requests.Response:
     return response
 
 
-def get_response_from_search_api(
+def get_response_from_search_api_geo(
+    longitude: str,
+    latitude: str
+) -> requests.Response:
+    search_api_server = "https://search-maps.yandex.ru/v1/"
+    api_key = SEARCH_API_KEY
+
+    address_ll = f'{longitude},{latitude}'
+
+    search_params = {
+        "apikey": api_key,
+        "text": f'{latitude},{longitude}',
+        "lang": "ru_RU",
+        "ll": address_ll,
+        "type": "geo"
+    }
+
+    response = requests.get(search_api_server, params=search_params)
+
+    return response
+
+
+def get_response_from_search_api_biz(
     longitude: str,
     latitude: str
 ) -> requests.Response:
@@ -54,7 +76,7 @@ def get_response_from_search_api(
         "text": address_ll,
         "lang": "ru_RU",
         "ll": address_ll,
-        "type": "geo"
+        "type": "biz"
     }
 
     response = requests.get(search_api_server, params=search_params)

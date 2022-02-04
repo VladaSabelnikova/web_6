@@ -44,11 +44,21 @@ def get_postal_code_from_geocoder_response(
     return postal_code
 
 
-def get_full_address_from_search_response(
+def get_full_address_from_search_response_geo(
     response: requests.Response
 ) -> str:
     json_response = response.json()
     location = json_response["features"][0]
     org_address = location["properties"]["GeocoderMetaData"]["text"]
+
+    return org_address
+
+
+def get_full_address_from_search_response_biz(
+    response: requests.Response
+) -> str:
+    json_response = response.json()
+    organization = json_response["features"][0]
+    org_address = organization["properties"]["CompanyMetaData"]["address"]
 
     return org_address
