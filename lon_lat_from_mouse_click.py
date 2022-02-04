@@ -16,5 +16,4 @@ def get_lon_lat_from_mouse_click(
     new_lon = lon + lon_shift
     new_lat = lat - lat_shift
 
-    print(str(new_lon), str(new_lat))
     return str(new_lon), str(new_lat)

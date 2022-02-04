@@ -2,6 +2,8 @@ from typing import Tuple, Optional
 
 import requests
 
+from lon_lat_distance import lonlat_distance
+
 
 def get_lon_lat_from_geocoder_response(
     response: requests.Response
@@ -55,12 +57,21 @@ def get_full_address_from_search_response_geo(
 
 
 def get_full_address_from_search_response_biz(
-    response: requests.Response
+    response: requests.Response,
+    lon: float,
+    lat: float
+
 ) -> Optional[str]:
     json_response = response.json()
     if not json_response["features"]:
         return None
     organization = json_response["features"][0]
+
+    pos_lon, pos_lat = organization['geometry']['coordinates']
+
+    if lonlat_distance((pos_lon, pos_lat), (lon, lat)) > 50:
+        return None
+
     org_address = organization["properties"]["CompanyMetaData"]["address"]
 
     org_address += f' {organization["properties"]["CompanyMetaData"]["name"]}'

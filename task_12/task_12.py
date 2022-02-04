@@ -172,7 +172,7 @@ def main() -> None:
 
                 elif event.button == MOUSE_KEY_RIGHT:
                     # Вычисляем координату
-                    longitude, latitude = get_lon_lat_from_mouse_click(
+                    lon, lat = get_lon_lat_from_mouse_click(
                         event.pos,
                         float(longitude),
                         float(latitude),
@@ -181,12 +181,14 @@ def main() -> None:
 
                     # Объект, из которого найдём адрес
                     response_search_api = get_response_from_search_api_biz(
-                        longitude,
-                        latitude
+                        lon,
+                        lat
                     )
 
                     address = get_full_address_from_search_response_biz(
-                        response_search_api
+                        response_search_api,
+                        float(lon),
+                        float(lat)
                     )
                     if address:
                         address_label.set_text(address)
